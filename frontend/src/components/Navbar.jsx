@@ -4,7 +4,7 @@
  */
 
 import { useAuth } from "../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Navbar = () => {
   const { currentUser, userProfile, logout } = useAuth();
@@ -26,11 +26,27 @@ const Navbar = () => {
     <nav className="bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo/Title */}
-          <div className="flex items-center">
+          {/* Logo/Title and Navigation */}
+          <div className="flex items-center space-x-8">
             <h1 className="text-xl font-bold text-indigo-600">
               Meeting Scheduler
             </h1>
+
+            {/* Navigation links */}
+            <nav className="hidden md:flex space-x-6">
+              <Link
+                to="/dashboard"
+                className="text-gray-700 hover:text-indigo-600 font-medium transition"
+              >
+                Users
+              </Link>
+              <Link
+                to="/invitations"
+                className="text-gray-700 hover:text-indigo-600 font-medium transition"
+              >
+                Invitations
+              </Link>
+            </nav>
           </div>
 
           {/* User info and logout */}
