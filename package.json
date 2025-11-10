@@ -1,0 +1,27 @@
+{
+  "name": "meeting-scheduler",
+  "version": "1.0.0",
+  "description": "Platform for scheduling meetings with invitation system",
+  "scripts": {
+    "setup": "npm install && cd frontend && npm install",
+    "emulators": "firebase emulators:start --import=./emulator-data --export-on-exit",
+    "dev": "concurrently \"npm run emulators\" \"cd frontend && npm run dev\"",
+    "frontend": "cd frontend && npm run dev",
+    "seed": "node scripts/seed-data.js"
+  },
+  "keywords": [
+    "meeting",
+    "scheduler",
+    "firebase",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "firebase-tools": "^13.0.0",
+    "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  }
+}
