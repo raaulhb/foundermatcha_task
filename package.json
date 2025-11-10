@@ -1,7 +1,12 @@
 {
   "name": "meeting-scheduler",
   "version": "1.0.0",
-  "description": "Platform for scheduling meetings with invitation system",
+  "description": "Full-stack meeting scheduling platform with real-time invitations and automatic meeting creation using React, Firebase, and Tailwind CSS",
+  "author": "Raul Barros",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raaulhb/foundermatcha_task.git"
+  },
   "scripts": {
     "setup": "npm install && cd frontend && npm install",
     "emulators": "firebase emulators:start --import=./emulator-data --export-on-exit",
