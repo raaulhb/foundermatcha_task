@@ -15,6 +15,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import InvitePage from "./pages/InvitePage";
 import Invitations from "./pages/Invitations";
+import Meetings from "./pages/Meetings";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -56,6 +57,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <Invitations />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/meetings"
+            element={
+              <ProtectedRoute>
+                <Meetings />
               </ProtectedRoute>
             }
           />
