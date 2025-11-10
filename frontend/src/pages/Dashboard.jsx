@@ -7,17 +7,24 @@ import { useState, useEffect } from "react";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useAuth } from "../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import UserCard from "../components/UserCard";
 
 const Dashboard = () => {
+  // First declare hooks from React Router
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Then use them in state initialization
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState(
+    location.state?.message || ""
+  );
 
   const { currentUser } = useAuth();
-  const navigate = useNavigate();
 
   /**
    * Fetch all users from Firestore
@@ -67,6 +74,18 @@ const Dashboard = () => {
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Success message */}
+        {successMessage && (
+          <div className="mb-6 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded flex justify-between items-center">
+            <span>{successMessage}</span>
+            <button
+              onClick={() => setSuccessMessage("")}
+              className="text-green-700 hover:text-green-900 font-bold"
+            >
+              ×
+            </button>
+          </div>
+        )}
         {/* Page header */}
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-gray-900">All Users</h2>
